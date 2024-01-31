@@ -9,13 +9,13 @@ MainWindow::MainWindow(QWidget *parent) :
     logger->file.remove();
     giftLogger = new Logger("02 Gifts",this);
     //qDebug()<<QSslSocket::sslLibraryBuildVersionString();
-    auth_key="76d05e46d5278524324f58613d10c823";
+    auth_key="";
     sessionKey="";
     eventId=0;
     startTime=QDateTime::currentMSecsSinceEpoch();
     packageID=392;
     clientVersion="1642079931";
-    digestHash="5327913340c975bef8ea64d5d5d551817adab879";
+    digestHash="";
     ui->setupUi(this);
     MapPainter *mapPainter = new MapPainter("main_map",this);
     cookieJar= new QNetworkCookieJar(this);
@@ -57,8 +57,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(eventTimer,SIGNAL(timeout()),SLOT(slot_eventTimer()));
     view->load(QUrl("https://vk.com/"));
 
-    //slot_items();
-    //s/lot_getStart();
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(replyFinished(QNetworkReply*)));
@@ -522,7 +520,7 @@ void MainWindow::on_btnCalcFriends_clicked()
 
 void MainWindow::on_btnGet1_clicked()
 {
-    view->load(QUrl("https://oauth.vk.com/authorize?client_id=3083242&scope=friends,photos&redirect_uri=https://oauth.vk.com/blank.html&display=popup&v=5.4&response_type=token"));
+    view->load(QUrl("https://oauth.vk.com/authorize?client_id=&scope=friends,photos&redirect_uri=https://oauth.vk.com/blank.html&display=popup&v=5.4&response_type=token"));
 }
 
 void MainWindow::getUsers(QString user_id) {
